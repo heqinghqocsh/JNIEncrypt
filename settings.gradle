@@ -1,0 +1,3 @@
+include ':NativeEncrypt'
+include ':app'
+rootProject.name = "JNIEncrypt"
