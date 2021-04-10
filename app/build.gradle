@@ -1,5 +1,7 @@
-plugins {
-    id 'com.android.application'
+if (String.valueOf(runModule) == "app") {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
 }
 
 android {
@@ -7,7 +9,9 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.jni.encrypt"
+        if (String.valueOf(runModule) == "app") {
+            applicationId "com.jni.encrypt"
+        }
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
@@ -36,4 +40,5 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation project(path: ':NativeEncrypt')
 }

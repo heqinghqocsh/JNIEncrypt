@@ -1,5 +1,7 @@
-plugins {
-    id 'com.android.library'
+if (String.valueOf(runModule) == "NativeTools-lib") {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
 }
 
 android {
@@ -7,6 +9,9 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
+        if (String.valueOf(runModule) == "NativeTools-lib") {
+            applicationId "com.jni.encrypt"
+        }
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
